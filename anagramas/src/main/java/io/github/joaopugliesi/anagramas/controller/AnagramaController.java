@@ -5,6 +5,7 @@ import io.github.joaopugliesi.anagramas.service.AnagramaService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 public class AnagramaController {
 
     AnagramaService service;
