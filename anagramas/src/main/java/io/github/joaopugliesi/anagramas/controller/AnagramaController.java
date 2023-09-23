@@ -1,9 +1,8 @@
 package io.github.joaopugliesi.anagramas.controller;
 
+import io.github.joaopugliesi.anagramas.model.Anagrama;
 import io.github.joaopugliesi.anagramas.service.AnagramaService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AnagramaController {
@@ -13,10 +12,10 @@ public class AnagramaController {
         this.service = service;
     }
 
-    @GetMapping("/checkAnagram")
-    public String checarAnagrama(@RequestParam("Palavra 1") String primeiraPalavra, @RequestParam("Palavra 2") String segundaPalavra) {
+    @PostMapping("/anagrama")
+    public String checarAnagrama(@RequestBody Anagrama anagrama) {
 
-        boolean resultado = service.anagramas(primeiraPalavra, segundaPalavra);
+        boolean resultado = service.anagramas(anagrama.getPalavra1(), anagrama.getPalavra2());
 
         if (resultado) {
             return "As palavras são anagramas.";
